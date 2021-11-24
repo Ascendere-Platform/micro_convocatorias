@@ -20,6 +20,7 @@ func RegistroTipoProyecto(r convocatoriamodels.TipoProyecto) (string, bool, erro
 		ID:                 primitive.NewObjectID(),
 		TipoProyecto:      r.TipoProyecto,
 		DecripcionTipo:  r.DecripcionTipo,
+		Presupuesto: r.Presupuesto,
 	}
 
 	result, err := col.InsertOne(ctx, registro)
