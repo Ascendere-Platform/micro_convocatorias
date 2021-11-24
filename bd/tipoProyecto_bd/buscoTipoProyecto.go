@@ -10,7 +10,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-func BuscoTipoRecurso(id string) (convocatoriamodels.TipoProyecto, error) {
+func BuscoTipoProyecto(id string) (convocatoriamodels.TipoProyecto, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*15)
 	defer cancel()
 

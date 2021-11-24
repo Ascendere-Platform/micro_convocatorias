@@ -9,7 +9,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-func ListoTipoRecurso() ([]*convocatoriamodels.TipoProyecto, bool) {
+func ListoTipoProyecto() ([]*convocatoriamodels.TipoProyecto, bool) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
