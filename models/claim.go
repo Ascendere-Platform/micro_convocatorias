@@ -7,9 +7,9 @@ import (
 
 //Claim es la estructura usada para procesar JWT
 type Claim struct {
-	Email string             `json:"email"`
-	ID    primitive.ObjectID `bson:"_id" json:"_id,omitempty"`
-	Nombre string `bson:"nombre" json:"nombre,omitempty"`
-	Apellidos string `bson:"apellidos" json:"apellidos,omitempty"`
+	Email     string             `json:"email"`
+	ID        primitive.ObjectID `bson:"_id" json:"_id,omitempty"`
+	Nombre    string             `bson:"nombre" json:"nombre,omitempty"`
+	Apellidos string             `bson:"apellidos" json:"apellidos,omitempty"`
 	jwt.StandardClaims
 }
