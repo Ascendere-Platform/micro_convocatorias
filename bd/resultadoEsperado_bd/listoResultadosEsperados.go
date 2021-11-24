@@ -1,4 +1,5 @@
 package resultadoEsperadobd
+
 import (
 	"context"
 	"time"
@@ -8,7 +9,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-func ListoLineasEstrategicas() ([]*convocatoriamodels.ResultadoEsperado, bool) {
+func ListoResultadosEsperados() ([]*convocatoriamodels.ResultadoEsperado, bool) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
@@ -29,7 +30,7 @@ func ListoLineasEstrategicas() ([]*convocatoriamodels.ResultadoEsperado, bool) {
 		if err != nil {
 			return results, false
 		}
-			results = append(results, &s)
+		results = append(results, &s)
 
 	}
 

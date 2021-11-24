@@ -1,4 +1,5 @@
 package resultadoEsperadobd
+
 import (
 	"context"
 	"time"
@@ -8,7 +9,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-func EliminoRubrica(tipoID string) error {
+func EliminoResultadoEsperado(tipoID string) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
@@ -18,7 +19,7 @@ func EliminoRubrica(tipoID string) error {
 	objID, _ := primitive.ObjectIDFromHex(tipoID)
 
 	condicion := bson.M{
-		"_id":objID,
+		"_id": objID,
 	}
 
 	_, err := col.DeleteOne(ctx, condicion)

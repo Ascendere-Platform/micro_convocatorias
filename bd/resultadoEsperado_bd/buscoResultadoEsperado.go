@@ -10,7 +10,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-func BuscoRubrica(id string) (convocatoriamodels.ResultadoEsperado, error) {
+func BuscoResultadoEsperado(id string) (convocatoriamodels.ResultadoEsperado, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*15)
 	defer cancel()
 
@@ -19,13 +19,13 @@ func BuscoRubrica(id string) (convocatoriamodels.ResultadoEsperado, error) {
 
 	objID, _ := primitive.ObjectIDFromHex(id)
 
-	condicion := bson.M{"_id":objID}
-	
+	condicion := bson.M{"_id": objID}
+
 	var resultado convocatoriamodels.ResultadoEsperado
 
 	err := col.FindOne(ctx, condicion).Decode(&resultado)
 
-	if err != nil{
+	if err != nil {
 		return resultado, err
 	}
 	return resultado, err
