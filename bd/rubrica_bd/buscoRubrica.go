@@ -10,18 +10,18 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-func BuscoRubrica(id string) (convocatoriamodels.LineaEstrategica, error) {
+func BuscoRubrica(id string) (convocatoriamodels.Rubrica, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*15)
 	defer cancel()
 
 	db := bd.MongoCN.Database("Convocatoria")
-	col := db.Collection("lineaEstrategica")
+	col := db.Collection("rubricaPostulacion")
 
 	objID, _ := primitive.ObjectIDFromHex(id)
 
 	condicion := bson.M{"_id":objID}
 	
-	var resultado convocatoriamodels.LineaEstrategica
+	var resultado convocatoriamodels.Rubrica
 
 	err := col.FindOne(ctx, condicion).Decode(&resultado)
 
