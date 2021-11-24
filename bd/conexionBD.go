@@ -11,7 +11,7 @@ import (
 var MongoCN = ConectarBD()
 var clientOptions = options.Client().ApplyURI("mongodb+srv://user:twittorpass@cluster0.pnsxo.mongodb.net/twittor?authSource=admin")
 
-func ConectarBD() *mongo.Client{
+func ConectarBD() *mongo.Client {
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 
 	if err != nil {
@@ -20,7 +20,7 @@ func ConectarBD() *mongo.Client{
 	}
 	err = client.Ping(context.TODO(), nil)
 
-	if  err !=nil {
+	if err != nil {
 		log.Fatal(err.Error())
 		return client
 	}
