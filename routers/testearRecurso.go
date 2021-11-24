@@ -5,15 +5,13 @@ import (
 	"net/http"
 
 	recursobd "github.com/ascendere/micro-convocatorias/bd/recurso_bd"
-	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 func TestearRecurso(w http.ResponseWriter, r *http.Request) {
 
 	id := r.URL.Query().Get("id")
-	objID,_ := primitive.ObjectIDFromHex(id)
 
-	recurso, err := recursobd.ValidoRecurso(objID, Tk)
+	recurso, err := recursobd.ValidoRecurso(id, Tk)
 
 	if err != nil {
 		http.Error(w, "Ocurrio un error " + err.Error(), 400)

@@ -7,17 +7,14 @@ import (
 	"net/http"
 
 	recursosmodels "github.com/ascendere/micro-convocatorias/models/recursos_models"
-	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-func ValidoRecurso(id primitive.ObjectID, tk string) (recursosmodels.ConsultoRecurso, error) {
+func ValidoRecurso(id string, tk string) (recursosmodels.ConsultoRecurso, error) {
 	var recurso recursosmodels.ConsultoRecurso
 
 	client := &http.Client{}
 
-	objID := id.String()
-
-	req, err := http.NewRequest("GET", "http://34.121.243.107/buscarRecurso?recurso="+objID, nil)
+	req, err := http.NewRequest("GET", "http://34.121.243.107/buscarRecurso?recurso="+id, nil)
 
 	if err != nil {
 		return recurso, err
