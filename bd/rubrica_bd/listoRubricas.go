@@ -9,7 +9,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-func ListoLineasEstrategicas() ([]*convocatoriamodels.Rubrica, bool) {
+func ListoRubricas() ([]*convocatoriamodels.Rubrica, bool) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
