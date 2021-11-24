@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/ascendere/micro-convocatorias/middlew"
+	"github.com/ascendere/micro-convocatorias/routers"
 	anexorouters "github.com/ascendere/micro-convocatorias/routers/anexo_routers"
 	lineaEstrategicarouters "github.com/ascendere/micro-convocatorias/routers/lineaEstrategica_routers"
 	resultadoEsperadorouters "github.com/ascendere/micro-convocatorias/routers/resultadoEsperado_routers"
@@ -31,7 +32,6 @@ func Manejadores() {
 	router.HandleFunc("/buscarLinea", middlew.ChequeoBD(middlew.ValidoJWT(lineaEstrategicarouters.BuscarLineaEstrategica))).Methods("GET")
 	router.HandleFunc("/listarLineas", middlew.ChequeoBD(middlew.ValidoJWT(lineaEstrategicarouters.ListarLineasEstrategicas))).Methods("GET")
 
-
 	//Llamada al CRUD de Resultados Esperados
 	router.HandleFunc("/registrarResultadoEsperado", middlew.ChequeoBD(middlew.ValidoJWT(resultadoEsperadorouters.RegistrarResultadoEsperado))).Methods("POST")
 	router.HandleFunc("/eliminarResultadoEsperado", middlew.ChequeoBD(middlew.ValidoJWT(resultadoEsperadorouters.EliminarResultadoEsperado))).Methods("DELETE")
@@ -50,6 +50,8 @@ func Manejadores() {
 	router.HandleFunc("/buscarTipoProyecto", middlew.ChequeoBD(middlew.ValidoJWT(tipoProyectorouters.BuscarTipoProyecto))).Methods("GET")
 	router.HandleFunc("/listarTiposProyectos", middlew.ChequeoBD(middlew.ValidoJWT(tipoProyectorouters.ListarTiposProyectos))).Methods("GET")
 
+	//Testeo BD recurso
+	router.HandleFunc("/buscarRecurso", middlew.ChequeoBD(middlew.ValidoJWT(routers.TestearRecurso))).Methods("GET")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
