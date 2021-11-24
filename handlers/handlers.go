@@ -33,10 +33,10 @@ func Manejadores() {
 
 
 	//Llamada al CRUD de Resultados Esperados
-	router.HandleFunc("/registrarResultadoEsparado", middlew.ChequeoBD(middlew.ValidoJWT(resultadoEsperadorouters.RegistrarResultadoEsperado))).Methods("POST")
-	router.HandleFunc("/eliminarResultadoEsparado", middlew.ChequeoBD(middlew.ValidoJWT(resultadoEsperadorouters.EliminarResultadoEsperado))).Methods("DELETE")
-	router.HandleFunc("/buscarResultadoEsparado", middlew.ChequeoBD(middlew.ValidoJWT(resultadoEsperadorouters.BuscarResultadoEsperado))).Methods("GET")
-	router.HandleFunc("/listarResultadosEsparados", middlew.ChequeoBD(middlew.ValidoJWT(resultadoEsperadorouters.ListarResultadosEsperados))).Methods("GET")
+	router.HandleFunc("/registrarResultadoEsperado", middlew.ChequeoBD(middlew.ValidoJWT(resultadoEsperadorouters.RegistrarResultadoEsperado))).Methods("POST")
+	router.HandleFunc("/eliminarResultadoEsperado", middlew.ChequeoBD(middlew.ValidoJWT(resultadoEsperadorouters.EliminarResultadoEsperado))).Methods("DELETE")
+	router.HandleFunc("/buscarResultadoEsperado", middlew.ChequeoBD(middlew.ValidoJWT(resultadoEsperadorouters.BuscarResultadoEsperado))).Methods("GET")
+	router.HandleFunc("/listarResultadosEsperados", middlew.ChequeoBD(middlew.ValidoJWT(resultadoEsperadorouters.ListarResultadosEsperados))).Methods("GET")
 
 	//Llamada al CRUD de Rubricas
 	router.HandleFunc("/registrarRubrica", middlew.ChequeoBD(middlew.ValidoJWT(rubricarouters.RegistrarRubrica))).Methods("POST")
