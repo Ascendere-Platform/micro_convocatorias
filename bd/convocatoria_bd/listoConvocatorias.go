@@ -32,25 +32,14 @@ func ListoConvocatorias(aprobada string, tk string) ([]*convocatoriamodels.Devue
 		return results, false
 	}
 
-	var incluir bool
-
 	for cur.Next(ctx) {
 		var s convocatoriamodels.Convocatoria
 		err := cur.Decode(&s)
 		if err != nil {
 			return results, false
 		}
+		convocatorias = append(convocatorias, &s)
 
-		if aprobada == "aprobada" && s.Estado {
-			incluir = true
-		}
-		if aprobada == "revision" && !s.Estado {
-			incluir = true
-		}
-
-		if incluir {
-			convocatorias = append(convocatorias, &s)
-		}
 	}
 
 	err = cur.Err()
