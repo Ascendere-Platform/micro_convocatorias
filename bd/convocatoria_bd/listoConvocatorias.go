@@ -20,7 +20,7 @@ func ListoConvocatorias(tk string) ([]*convocatoriamodels.DevuelvoConvocatoria, 
 	defer cancel()
 
 	db := bd.MongoCN.Database("Convocatoria")
-	col := db.Collection("anexosConvocatoria")
+	col := db.Collection("convocatoria")
 
 	var convocatorias []*convocatoriamodels.Convocatoria
 	var results []*convocatoriamodels.DevuelvoConvocatoria
