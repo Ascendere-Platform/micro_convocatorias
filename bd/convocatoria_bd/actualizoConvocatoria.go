@@ -37,7 +37,7 @@ func ActualizoConvocatoria(u convocatoriamodels.Convocatoria) (bool, error) {
 	}
 
 	if len(u.Antecedentes) > 0 {
-		registro["antecendentes"] = u.Antecedentes
+		registro["antecedentes"] = u.Antecedentes
 	}
 
 	if len(u.Objetivos) > 0 {
