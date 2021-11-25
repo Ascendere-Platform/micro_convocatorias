@@ -10,7 +10,7 @@ import (
 )
 
 func ActualizoConvocatoria(u convocatoriamodels.Convocatoria) (bool, error) {
-	
+
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*15)
 
 	defer cancel()
@@ -74,6 +74,14 @@ func ActualizoConvocatoria(u convocatoriamodels.Convocatoria) (bool, error) {
 
 	if u.CalificacionProyecto > 0 {
 		registro["calificacionProyecto"] = u.CalificacionProyecto
+	}
+
+	if u.Estado {
+		registro["estado"] = u.Estado
+	}
+
+	if !u.Estado {
+		registro["estado"] = u.Estado
 	}
 
 	updtString := bson.M{
