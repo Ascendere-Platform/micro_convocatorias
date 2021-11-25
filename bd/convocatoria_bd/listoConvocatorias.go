@@ -68,7 +68,7 @@ func ListoConvocatorias(tk string) ([]*convocatoriamodels.DevuelvoConvocatoria, 
 		resultado.CreadorConvocatoria = convocatoria.CreadorConvocatoria
 
 		for _, anexo := range convocatoria.AnexosConvocatoria {
-			objID := anexo.String()
+			objID := anexo.Hex()
 			resultadoAnexo, errAnexo := anexobd.BuscoAnexo(objID)
 			if errAnexo != nil {
 				return results, false
@@ -77,7 +77,7 @@ func ListoConvocatorias(tk string) ([]*convocatoriamodels.DevuelvoConvocatoria, 
 		}
 
 		for _, resultadosEsperados := range convocatoria.ResultadosEsperados {
-			objID := resultadosEsperados.String()
+			objID := resultadosEsperados.Hex()
 			result, errResult := resultadoEsperadobd.BuscoResultadoEsperado(objID)
 			if errResult != nil {
 				return results, false
@@ -86,7 +86,7 @@ func ListoConvocatorias(tk string) ([]*convocatoriamodels.DevuelvoConvocatoria, 
 		}
 
 		for _, tipos := range convocatoria.TiposProyectos {
-			objID := tipos.String()
+			objID := tipos.Hex()
 			resultadoTipo, errTipo := tipoProyectobd.BuscoTipoProyecto(objID)
 			if errTipo != nil {
 				return results, false
@@ -95,7 +95,7 @@ func ListoConvocatorias(tk string) ([]*convocatoriamodels.DevuelvoConvocatoria, 
 		}
 
 		for _, lineas := range convocatoria.LineasEstrategicas {
-			objID := lineas.String()
+			objID := lineas.Hex()
 			resultadoLinea, errLinea := lineaEstrategicabd.BuscoLineaEstrategica(objID)
 			if errLinea != nil {
 				return results, false
@@ -104,7 +104,7 @@ func ListoConvocatorias(tk string) ([]*convocatoriamodels.DevuelvoConvocatoria, 
 		}
 
 		for _, rubricas := range convocatoria.RubricasConvocatoria {
-			objID := rubricas.String()
+			objID := rubricas.Hex()
 			resultadoRubrica, errRubrica := rubricabd.BuscoRubrica(objID)
 			if errRubrica != nil {
 				return results, false
@@ -113,7 +113,7 @@ func ListoConvocatorias(tk string) ([]*convocatoriamodels.DevuelvoConvocatoria, 
 		}
 
 		for _, recursos := range convocatoria.RecursosConvocatoria {
-			objID := recursos.String()
+			objID := recursos.Hex()
 			resultadoRecurso, errRecurso := recursobd.ValidoRecurso(objID, tk)
 			if errRecurso != nil {
 				return results, false
