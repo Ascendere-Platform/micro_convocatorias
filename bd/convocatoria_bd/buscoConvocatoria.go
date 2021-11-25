@@ -16,7 +16,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-func BuscoConvocatoria(id string, tk string) (convocatoriamodels.DevuelvoConvocatoria, error) {
+func BuscoConvocatoria(id string, tk string) (convocatoriamodels.DevuelvoConvocatoria, error, string) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*15)
 	defer cancel()
 
@@ -53,7 +53,7 @@ func BuscoConvocatoria(id string, tk string) (convocatoriamodels.DevuelvoConvoca
 		objID := anexo.String()
 		resultadoAnexo, errAnexo := anexobd.BuscoAnexo(objID)
 		if errAnexo != nil {
-			return resultado, errAnexo
+			return resultado, errAnexo, "error anexos"
 		}
 		resultado.AnexosConvocatoria = append(resultado.AnexosConvocatoria, resultadoAnexo)
 	}
@@ -62,7 +62,7 @@ func BuscoConvocatoria(id string, tk string) (convocatoriamodels.DevuelvoConvoca
 		objID := resultadosEsperados.String()
 		result, errResult := resultadoEsperadobd.BuscoResultadoEsperado(objID)
 		if errResult != nil {
-			return resultado, errResult
+			return resultado, errResult, "error resultados"
 		}
 		resultado.ResultadosEsperados = append(resultado.ResultadosEsperados, result)
 	}
@@ -71,7 +71,7 @@ func BuscoConvocatoria(id string, tk string) (convocatoriamodels.DevuelvoConvoca
 		objID := tipos.String()
 		resultadoTipo, errTipo := tipoProyectobd.BuscoTipoProyecto(objID)
 		if errTipo != nil {
-			return resultado, errTipo
+			return resultado, errTipo, "error tipos"
 		}
 		resultado.TiposProyectos = append(resultado.TiposProyectos, resultadoTipo)
 	}
@@ -80,7 +80,7 @@ func BuscoConvocatoria(id string, tk string) (convocatoriamodels.DevuelvoConvoca
 		objID := lineas.String()
 		resultadoLinea, errLinea := lineaEstrategicabd.BuscoLineaEstrategica(objID)
 		if errLinea != nil {
-			return resultado, errLinea
+			return resultado, errLinea, "error lineas"
 		}
 		resultado.LineasEstrategicas = append(resultado.LineasEstrategicas, resultadoLinea)
 	}
@@ -89,7 +89,7 @@ func BuscoConvocatoria(id string, tk string) (convocatoriamodels.DevuelvoConvoca
 		objID := rubricas.String()
 		resultadoRubrica, errRubrica := rubricabd.BuscoRubrica(objID)
 		if errRubrica != nil {
-			return resultado, errRubrica
+			return resultado, errRubrica, "error rubricas"
 		}
 		resultado.RubricasConvocatoria = append(resultado.RubricasConvocatoria, resultadoRubrica)
 	}
@@ -98,13 +98,13 @@ func BuscoConvocatoria(id string, tk string) (convocatoriamodels.DevuelvoConvoca
 		objID := recursos.String()
 		resultadoRecurso, errRecurso := recursobd.ValidoRecurso(objID, tk)
 		if errRecurso != nil {
-			return resultado, errRecurso
+			return resultado, errRecurso, "error recursos"
 		}
 		resultado.RecursosConvocatoria = append(resultado.RecursosConvocatoria, resultadoRecurso)
 	}
 
 	if err != nil {
-		return resultado, err
+		return resultado, err, "No encuentra la convocatoria"
 	}
-	return resultado, err
+	return resultado, err, ""
 }
