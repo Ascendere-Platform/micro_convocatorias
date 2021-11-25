@@ -10,9 +10,7 @@ import (
 
 func ListarConvocatorias(w http.ResponseWriter, r *http.Request) {
 
-	approved := r.URL.Query().Get("approved")
-
-	result, status := convocatoriabd.ListoConvocatorias(approved, routers.Tk)
+	result, status := convocatoriabd.ListoConvocatorias(routers.Tk)
 	if !status {
 		http.Error(w, "Error al leer las convocatorias", http.StatusBadRequest)
 		return

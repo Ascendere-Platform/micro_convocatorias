@@ -15,7 +15,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-func ListoConvocatorias(aprobada string, tk string) ([]*convocatoriamodels.DevuelvoConvocatoria, bool) {
+func ListoConvocatorias(tk string) ([]*convocatoriamodels.DevuelvoConvocatoria, bool) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
