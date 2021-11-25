@@ -42,11 +42,6 @@ func ListoConvocatorias(tk string) ([]*convocatoriamodels.DevuelvoConvocatoria, 
 
 	}
 
-	err = cur.Err()
-	if err != nil {
-		return results, false
-	}
-
 	for _, convocatoria := range convocatorias {
 		var resultado convocatoriamodels.DevuelvoConvocatoria
 
@@ -122,7 +117,11 @@ func ListoConvocatorias(tk string) ([]*convocatoriamodels.DevuelvoConvocatoria, 
 		}
 		results = append(results, &resultado)
 	}
-
+	
+	err = cur.Err()
+	if err != nil {
+		return results, false
+	}
 	cur.Close(ctx)
 	return results, true
 
