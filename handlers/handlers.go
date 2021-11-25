@@ -7,6 +7,7 @@ import (
 
 	"github.com/ascendere/micro-convocatorias/middlew"
 	anexorouters "github.com/ascendere/micro-convocatorias/routers/anexo_routers"
+	convocatoriarouters "github.com/ascendere/micro-convocatorias/routers/convocatoria_routers"
 	lineaEstrategicarouters "github.com/ascendere/micro-convocatorias/routers/lineaEstrategica_routers"
 	resultadoEsperadorouters "github.com/ascendere/micro-convocatorias/routers/resultadoEsperado_routers"
 	rubricarouters "github.com/ascendere/micro-convocatorias/routers/rubrica_routers"
@@ -31,7 +32,6 @@ func Manejadores() {
 	router.HandleFunc("/buscarLinea", middlew.ChequeoBD(middlew.ValidoJWT(lineaEstrategicarouters.BuscarLineaEstrategica))).Methods("GET")
 	router.HandleFunc("/listarLineas", middlew.ChequeoBD(middlew.ValidoJWT(lineaEstrategicarouters.ListarLineasEstrategicas))).Methods("GET")
 
-
 	//Llamada al CRUD de Resultados Esperados
 	router.HandleFunc("/registrarResultadoEsperado", middlew.ChequeoBD(middlew.ValidoJWT(resultadoEsperadorouters.RegistrarResultadoEsperado))).Methods("POST")
 	router.HandleFunc("/eliminarResultadoEsperado", middlew.ChequeoBD(middlew.ValidoJWT(resultadoEsperadorouters.EliminarResultadoEsperado))).Methods("DELETE")
@@ -49,6 +49,13 @@ func Manejadores() {
 	router.HandleFunc("/eliminarTipoProyecto", middlew.ChequeoBD(middlew.ValidoJWT(tipoProyectorouters.EliminarTipoProyecto))).Methods("DELETE")
 	router.HandleFunc("/buscarTipoProyecto", middlew.ChequeoBD(middlew.ValidoJWT(tipoProyectorouters.BuscarTipoProyecto))).Methods("GET")
 	router.HandleFunc("/listarTiposProyectos", middlew.ChequeoBD(middlew.ValidoJWT(tipoProyectorouters.ListarTiposProyectos))).Methods("GET")
+
+	//Llamada al CRUD de Convocatorias
+	router.HandleFunc("/registrarConvocatoria", middlew.ChequeoBD(middlew.ValidoJWT(convocatoriarouters.RegistrarConvocatoria))).Methods("POST")
+	router.HandleFunc("/eliminarConvocatoria", middlew.ChequeoBD(middlew.ValidoJWT(convocatoriarouters.EliminarConvocatoria))).Methods("DELETE")
+	router.HandleFunc("/buscarConvocatoria", middlew.ChequeoBD(middlew.ValidoJWT(convocatoriarouters.BuscarConvocatoria))).Methods("GET")
+	router.HandleFunc("/listarConvocatorias", middlew.ChequeoBD(middlew.ValidoJWT(convocatoriarouters.ListarConvocatorias))).Methods("GET")
+	router.HandleFunc("/actualizarConvocatoria", middlew.ChequeoBD(middlew.ValidoJWT(convocatoriarouters.ActualizarConvocatoria))).Methods("PUT")
 
 
 	PORT := os.Getenv("PORT")
