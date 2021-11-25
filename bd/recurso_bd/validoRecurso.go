@@ -3,7 +3,6 @@ package recursobd
 import (
 	"encoding/json"
 	"io/ioutil"
-	"log"
 	"net/http"
 
 	recursosmodels "github.com/ascendere/micro-convocatorias/models/recursos_models"
@@ -40,7 +39,7 @@ func ValidoRecurso(id string, tk string) (recursosmodels.ConsultoRecurso, error)
 
 	json.Unmarshal(bodyBytes, &recurso)
 
-	log.Println(recurso)
+
 
 	return recurso, err
 }
