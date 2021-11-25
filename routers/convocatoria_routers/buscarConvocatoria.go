@@ -2,6 +2,7 @@ package convocatoriarouters
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 
 	convocatoriabd "github.com/ascendere/micro-convocatorias/bd/convocatoria_bd"
@@ -18,6 +19,10 @@ func BuscarConvocatoria(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Ocurrio un error al buscar una convocatoria "+err.Error(), 400)
 		return
 	}
+
+	log.Print(informacion)
+
+	log.Print(routers.Tk)
 
 	w.Header().Set("content-type", "application/json")
 	w.WriteHeader(http.StatusCreated)
