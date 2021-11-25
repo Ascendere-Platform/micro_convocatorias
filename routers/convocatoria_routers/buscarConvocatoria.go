@@ -13,10 +13,10 @@ func BuscarConvocatoria(w http.ResponseWriter, r *http.Request) {
 
 	id := r.URL.Query().Get("id")
 
-	informacion, err := convocatoriabd.BuscoConvocatoria(id, routers.Tk)
+	informacion, err, mensaje := convocatoriabd.BuscoConvocatoria(id, routers.Tk)
 
 	if err != nil {
-		http.Error(w, "Ocurrio un error al buscar una convocatoria "+err.Error(), 400)
+		http.Error(w, "Ocurrio un error al buscar una convocatoria "+err.Error()+" " + mensaje, 400)
 		return
 	}
 
