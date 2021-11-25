@@ -50,7 +50,7 @@ func BuscoConvocatoria(id string, tk string) (convocatoriamodels.DevuelvoConvoca
 	resultado.CreadorConvocatoria = convocatoria.CreadorConvocatoria
 
 	for _, anexo := range convocatoria.AnexosConvocatoria {
-		objID := anexo.String()
+		objID := anexo.Hex()
 		resultadoAnexo, errAnexo := anexobd.BuscoAnexo(objID)
 		if errAnexo != nil {
 			return resultado, errAnexo, "error anexos"
@@ -59,7 +59,7 @@ func BuscoConvocatoria(id string, tk string) (convocatoriamodels.DevuelvoConvoca
 	}
 
 	for _, resultadosEsperados := range convocatoria.ResultadosEsperados {
-		objID := resultadosEsperados.String()
+		objID := resultadosEsperados.Hex()
 		result, errResult := resultadoEsperadobd.BuscoResultadoEsperado(objID)
 		if errResult != nil {
 			return resultado, errResult, "error resultados"
@@ -68,7 +68,7 @@ func BuscoConvocatoria(id string, tk string) (convocatoriamodels.DevuelvoConvoca
 	}
 
 	for _, tipos := range convocatoria.TiposProyectos {
-		objID := tipos.String()
+		objID := tipos.Hex()
 		resultadoTipo, errTipo := tipoProyectobd.BuscoTipoProyecto(objID)
 		if errTipo != nil {
 			return resultado, errTipo, "error tipos"
@@ -77,7 +77,7 @@ func BuscoConvocatoria(id string, tk string) (convocatoriamodels.DevuelvoConvoca
 	}
 
 	for _, lineas := range convocatoria.LineasEstrategicas {
-		objID := lineas.String()
+		objID := lineas.Hex()
 		resultadoLinea, errLinea := lineaEstrategicabd.BuscoLineaEstrategica(objID)
 		if errLinea != nil {
 			return resultado, errLinea, "error lineas"
@@ -86,7 +86,7 @@ func BuscoConvocatoria(id string, tk string) (convocatoriamodels.DevuelvoConvoca
 	}
 
 	for _, rubricas := range convocatoria.RubricasConvocatoria {
-		objID := rubricas.String()
+		objID := rubricas.Hex()
 		resultadoRubrica, errRubrica := rubricabd.BuscoRubrica(objID)
 		if errRubrica != nil {
 			return resultado, errRubrica, "error rubricas"
@@ -95,7 +95,7 @@ func BuscoConvocatoria(id string, tk string) (convocatoriamodels.DevuelvoConvoca
 	}
 
 	for _, recursos := range convocatoria.RecursosConvocatoria {
-		objID := recursos.String()
+		objID := recursos.Hex()
 		resultadoRecurso, errRecurso := recursobd.ValidoRecurso(objID, tk)
 		if errRecurso != nil {
 			return resultado, errRecurso, "error recursos"
