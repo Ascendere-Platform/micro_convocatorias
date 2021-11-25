@@ -15,7 +15,7 @@ func BuscarConvocatoria(w http.ResponseWriter, r *http.Request) {
 	informacion, err := convocatoriabd.BuscoConvocatoria(id, routers.Tk)
 
 	if err != nil {
-		http.Error(w, "Ocurrio un error al buscar una linea estrategica ", 400)
+		http.Error(w, "Ocurrio un error al buscar una convocatoria "+err.Error(), 400)
 		return
 	}
 
