@@ -22,6 +22,7 @@ type Convocatoria struct {
 	FechaCreacion           time.Time          `bson:"fechaCreacion" json:"fechaCreacion,omitempty"`
 	CalificacionPostulacion float64            `bson:"calificacionPostulacion" json:"calificacionPostulacion,omitempty"`
 	CalificacionProyecto    float64            `bson:"calificacionProyecto" json:"calificacionProyecto,omitempty"`
+	FechaPublicacion        time.Time          `bson:"fechaPublicacion" json:"fechaPublicacion,omitempty"`
 	CreadorConvocatoria     struct {
 		Email  string             `json:"email"`
 		ID     primitive.ObjectID `bson:"_id" json:"_id,omitempty"`
