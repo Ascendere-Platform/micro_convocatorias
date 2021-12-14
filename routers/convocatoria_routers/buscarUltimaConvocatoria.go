@@ -11,7 +11,7 @@ import (
 func BuscarUltimaConvocatoria(w http.ResponseWriter, r *http.Request) {
 
 	result, status := convocatoriabd.UltimaConvocatoria(routers.Tk)
-	if len(status) == 0{
+	if len(status) != 0{
 		http.Error(w, "Error al leer las convocatorias" + status ,http.StatusBadRequest)
 		return
 	}
