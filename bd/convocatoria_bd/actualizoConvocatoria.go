@@ -56,7 +56,7 @@ func ActualizoConvocatoria(u convocatoriamodels.Convocatoria) (bool, error) {
 		registro["reconocimiento"] = u.Reconocimiento
 	}
 
-	if len(u.Compromisos)>0{
+	if len(u.Compromisos) > 0 {
 		registro["compromisos"] = u.Compromisos
 	}
 
@@ -77,6 +77,7 @@ func ActualizoConvocatoria(u convocatoriamodels.Convocatoria) (bool, error) {
 	}
 
 	if u.Estado {
+		registro["fechaPublicacion"] = time.Now()
 		registro["estado"] = u.Estado
 	}
 

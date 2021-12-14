@@ -56,6 +56,7 @@ func Manejadores() {
 	router.HandleFunc("/buscarConvocatoria", middlew.ChequeoBD(middlew.ValidoJWT(convocatoriarouters.BuscarConvocatoria))).Methods("GET")
 	router.HandleFunc("/listarConvocatorias", middlew.ChequeoBD(middlew.ValidoJWT(convocatoriarouters.ListarConvocatorias))).Methods("GET")
 	router.HandleFunc("/actualizarConvocatoria", middlew.ChequeoBD(middlew.ValidoJWT(convocatoriarouters.ActualizarConvocatoria))).Methods("PUT")
+	router.HandleFunc("/ultimaConvocatoria", middlew.ChequeoBD(middlew.ValidoJWT(convocatoriarouters.BuscarUltimaConvocatoria))).Methods("GET")
 
 
 	PORT := os.Getenv("PORT")

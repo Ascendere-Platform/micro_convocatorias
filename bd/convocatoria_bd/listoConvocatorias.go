@@ -61,6 +61,7 @@ func ListoConvocatorias(tk string) ([]*convocatoriamodels.DevuelvoConvocatoria, 
 		resultado.CalificacionPostulacion = convocatoria.CalificacionPostulacion
 		resultado.CalificacionProyecto = convocatoria.CalificacionProyecto
 		resultado.CreadorConvocatoria = convocatoria.CreadorConvocatoria
+		resultado.FechaPublicacion = convocatoria.FechaPublicacion
 
 		for _, anexo := range convocatoria.AnexosConvocatoria {
 			objID := anexo.Hex()
