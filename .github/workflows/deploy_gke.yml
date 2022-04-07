@@ -34,8 +34,8 @@ jobs:
         with:
           context: .
           push: true
-          tags: '${{ secrets.DOCKER_USERNAME }}/micro_convocatorias'
-
+          tags: '${{ secrets.DOCKER_USERNAME }}/micro_users'
+          
   setup-and-deploy:
     name: Setup and Deploy
     needs: push_to_registry
