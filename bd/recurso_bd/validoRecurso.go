@@ -13,7 +13,7 @@ func ValidoRecurso(id string, tk string) (recursosmodels.ConsultoRecurso, error)
 
 	client := &http.Client{}
 
-	req, err := http.NewRequest("GET", "http://34.67.204.195/buscarRecurso?recurso="+id, nil)
+	req, err := http.NewRequest("GET", "http://35.239.170.70/buscarRecurso?recurso="+id, nil)
 
 	if err != nil {
 		return recurso, err
